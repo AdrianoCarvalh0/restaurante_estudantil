@@ -9,30 +9,67 @@
 
         {% endblock title %}
     </title>
-   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+<!--   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">-->
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+     <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
 
 </head>
 <body>
-<div class="header">
-    <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
-        <a class="pure-menu-heading" href="{% url 'core:home' %}">Refeitório</a>
-        <ul>
-            <li class="pure-menu-selected"><a href="{% url 'core:home' %}">Início</a></li>
-            <li><a href="{% url 'core:home' %}">Home</a></li>
-            <li><a href="{% url 'accounts:login' %}">Logar</a></li>
-            <li><a href="#">Contato</a></li>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Adriano</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'core:home' %}">Refeitório
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Logar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{ request.user.username.title }} </a>
+          </li>
+<!--          <li class="nav-item dropdown">-->
+<!--            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
+<!--            <div class="dropdown-menu" aria-labelledby="dropdown01">-->
+<!--              <a class="dropdown-item" href="#">Action</a>-->
+<!--              <a class="dropdown-item" href="#">Another action</a>-->
+<!--              <a class="dropdown-item" href="#">Something else here</a>-->
+<!--        </div>-->
+<!--      </li>-->
         </ul>
+      </div>
     </div>
-</div>
+  </nav>
+
 <div class="content">
     {% block content %}
 
     {% endblock %}
-    <div class="footer">
-        Refeitório
+
+      <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Ifsuldeminas - Refeitório{% now "d-m-Y" as my_current_time %}{{ my_current_time }}</p>
     </div>
+  </footer>
+
 </div>
-<!--<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>-->
+   <!-- Bootstrap core JavaScript -->
+
 </body>
 </html>
