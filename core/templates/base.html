@@ -9,24 +9,25 @@
 
         {% endblock title %}
     </title>
-<!--   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">-->
- <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
-     <!-- Bootstrap core CSS -->
-  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
 
+         <!-- Bootstrap core CSS -->
+      <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Adriano</a>
+      <a class="navbar-brand" href="#">IFSULDEMINAS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
+<!--              <a class="nav-link" href="{% url 'core:home' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Refeitório</a>-->
             <a class="nav-link" href="{% url 'core:home' %}">Refeitório
               <span class="sr-only">(current)</span>
             </a>
@@ -35,22 +36,53 @@
             <a class="nav-link" href="{% url 'core:home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Contato</a>
+            <a class="nav-link" href="{% url 'core:contact' %}">Contato</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}">Logar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">{{ request.user.username.title }} </a>
-          </li>
-<!--          <li class="nav-item dropdown">-->
-<!--            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
-<!--            <div class="dropdown-menu" aria-labelledby="dropdown01">-->
-<!--              <a class="dropdown-item" href="#">Action</a>-->
-<!--              <a class="dropdown-item" href="#">Another action</a>-->
-<!--              <a class="dropdown-item" href="#">Something else here</a>-->
-<!--        </div>-->
-<!--      </li>-->
+<!--          <li class="nav-item">-->
+<!--              {% if user.is_authenticated %}-->
+<!--               <a class="nav-link" href="#">{{ user }} </a>-->
+<!--                <li><a class="nav-link" href="{% url 'accounts:logout' %}">Sair</a></li>-->
+<!--                <li><a class="nav-link" href="{% url 'accounts:dashboard' %}">Painel</a></li>-->
+<!--            {% else %}-->
+<!--            <li class="nav-item">-->
+<!--              <li><a class="nav-link" href="{% url 'accounts:login' %}">Logar</a></li>-->
+<!--            </li>-->
+
+<!--            {% endif %}-->
+<!--          </li>-->
+
+
+
+  <div class="dropdown">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Acesso
+    <span class="caret"></span></button>
+
+      {% if user.is_authenticated %}
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{ user }}</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'accounts:dashboard' %}">Painel</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alterar senha</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'accounts:logout' %}">Sair</a></li>
+          <li role="presentation" class="divider"></li>
+        </ul>
+      {% else %}
+       <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'accounts:login' %}">Logar</a></li>
+          <li role="presentation" class="divider"></li>
+        </ul>
+      {% endif %}
+  </div>
+<!--        <ul class="nav navbar-nav navbar-right">-->
+<!--                    <li class="dropdown">-->
+<!--                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if user.is_authenticated %}{{ user.get_full_name|default:user.username }}{% endif %}<span class="caret"></span></a>-->
+<!--                      <ul class="dropdown-menu">-->
+<!--                        <li><a href="#">Alterar Senha</a></li>-->
+<!--                        <li role="separator" class="divider"></li>-->
+<!--                        <li> <a href="{% url 'accounts:logout' %}">Sair</a></li>-->
+<!--                      </ul>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+
         </ul>
       </div>
     </div>
@@ -71,5 +103,8 @@
 </div>
    <!-- Bootstrap core JavaScript -->
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-        Formulário de Login
+        Formulário de Adição de Usuários
 {% endblock title %}
 
 {% block content %}
- <br><br><br>
+ <br><br>
 <div class="d-flex justify-content-center">
      <div class="d-flex justify-content-center">
         <div class="login-form">
-            <h1>Login</h1>
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
             <h2>Informe seus dados de cadastro</h2>
             <form class="form-group" method="post">
                {% csrf_token %}
@@ -24,17 +22,11 @@
                       </div>
                       {% endfor %}
 
-                     <input class="btn btn-primary" type="submit" value="Entrar">
-                    <p>
-                        Não é cadastrado? <a href="{% url 'accounts:register' %}" title="">Cadastre-se</a><br>
-                        Esqueceu a senha? <a href="" title="">Nova senha</a><br>
-                    </p>
+                     <input class="btn btn-primary" type="submit" value="Cadastrar">
               </div>
            </form>
         </div>
      </div>
 </div>
-
-
 
 {% endblock %}
