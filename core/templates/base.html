@@ -27,13 +27,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-<!--              <a class="nav-link" href="{% url 'core:home' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Refeitório</a>-->
-            <a class="nav-link" href="{% url 'core:home' %}">Refeitório
-              <span class="sr-only">(current)</span>
-            </a>
+              <a class="nav-link" href="{% url 'core:home' %}"><i class='fa fa-coffee' aria-hidden="true"></i>&nbsp; Refeitório</a>
+<!--            <a class="nav-link" href="{% url 'core:home' %}">Refeitório-->
+<!--              <span class="sr-only">(current)</span>-->
+<!--            </a>-->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+            <a class="nav-link" href="{% url 'core:home' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'core:contact' %}">Contato</a>
@@ -54,7 +54,7 @@
 
 
   <div class="dropdown">
-    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Acesso
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><i class="fa fa-users" aria-hidden="true"></i>&nbsp; Acesso
     <span class="caret"></span></button>
 
       {% if user.is_authenticated %}
@@ -96,7 +96,7 @@
       <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Ifsuldeminas - Refeitório{% now "d-m-Y" as my_current_time %}{{ my_current_time }}</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Ifsuldeminas - Refeitório {% now "d-m-Y" as my_current_time %}{{ my_current_time }}</p>
     </div>
   </footer>
 

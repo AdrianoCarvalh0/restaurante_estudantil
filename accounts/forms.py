@@ -5,9 +5,7 @@ from django.contrib.auth.models import User
 #cria-se uma instância do UserCreationForm
 
 
-
 class RegisterForm(UserCreationForm):
-
     #não existe este campo, portanto está sendo criado por aqui e acrescentando aos que já existem
     email = forms.EmailField(label='E-mail')
 
@@ -19,11 +17,26 @@ class RegisterForm(UserCreationForm):
         else:
             #se não existir retorna o email
             return email
-
-
     #cria-se um novo save que vai substituir o save do UserCreationForm, colocando o email e salvando.
     def save(self):
+
         user = super(RegisterForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
         user.save()
         return user
+
+
+class EditAccountForm(forms.ModelForm):
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        queryset = User.objects.filter(
+            email=email).exclude(pk=self.instance.pk)
+        if queryset.exists():
+            raise forms.ValidationError('Já existe usuário com este E-mail')
+        else:
+            return email
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']
